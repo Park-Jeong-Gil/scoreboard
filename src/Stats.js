@@ -1,9 +1,12 @@
 import React from 'react';
 
 export const Stats = (props) => {
-  let totalPlayers =  -1;
-  let totalScore = -1;
+  let totalPlayers =  props.players.length;
+  let totalScore = 0;
+  props.players.forEach(player => totalScore += player.score);
+
   return (
+
     <table className="stats">
       <tbody>
       <tr>

@@ -4,6 +4,7 @@ import './App.css';
 
 import {Header} from './Header';
 import {Player} from './Player';
+import {AddPlayerFrom} from "./AddPlayerFrom";
 
 // 클래스 컴포넌트
 // 1. React.Component 상속, 2: render 오버라이딩해서 React Element를 리턴
@@ -22,7 +23,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="scoreboard">
-        <Header title="My Scoreboard" totalPlayers={11}/>
+        <Header title="My Scoreboard" players={this.state.players}/>
 
         {
           this.state.players.map((player) => {
@@ -34,6 +35,7 @@ class App extends React.Component {
             )
           })
         }
+        <AddPlayerFrom/>
       </div>
     );
   }
