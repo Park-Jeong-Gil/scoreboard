@@ -31,11 +31,12 @@ class App extends React.Component {
               <Player name={player.name} score={player.score} id={player.id} key={player.id}
                 // 2. props로 콜백 펑션을 전달
                       removePlayer={this.handleRemovePlayer}
-                      changeScore={this.handleChangeScore}/>
+                      changeScore={this.handleChangeScore}
+              />
             )
           })
         }
-        <AddPlayerFrom/>
+        <AddPlayerFrom addPlayer={this.handAddPlayer} />
       </div>
     );
   }
@@ -62,6 +63,10 @@ class App extends React.Component {
         })
       }
     })
+  }
+
+  handAddPlayer(name){
+    console.log('handAddPlayer', name);
   }
 }
 
