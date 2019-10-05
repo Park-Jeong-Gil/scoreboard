@@ -1,5 +1,6 @@
 import React from 'react';
 import {Stats} from './Stats';
+import {Stopwatch} from './Stopwatch';
 
 // function component 만드는 법
 // 1. 첫글자가 대문자
@@ -10,6 +11,7 @@ export const Header = (props) => {
     <header className="header">
       <Stats players={props.players}/>
       <h1 className="h1">{props.title}</h1>
+      <Stopwatch/>
     </header>
   );
 }

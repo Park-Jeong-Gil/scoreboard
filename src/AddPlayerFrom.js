@@ -11,7 +11,6 @@ export class AddPlayerFrom extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const form = document.getElementById("form");
     const player = document.getElementById("player");
     console.log(form.checkValidity());
