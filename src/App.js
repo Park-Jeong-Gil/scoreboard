@@ -11,12 +11,13 @@ import {AddPlayerFrom} from "./AddPlayerFrom";
 // 3. 속성앞에 this
 
 class App extends React.Component {
+  maxId = 4;
   state = {
     players: [
       {name: 'LDK', score: 30, id: 1},
       {name: 'HONG', score: 40, id: 2},
       {name: 'KIM', score: 50, id: 3},
-      {name: 'PARK', score: 60, id: 4}
+      {name: 'PARK', score: 60, id: 4},
     ]
   }
 
@@ -65,8 +66,21 @@ class App extends React.Component {
     })
   }
 
-  handAddPlayer(name){
+  handAddPlayer = (name) => {
     console.log('handAddPlayer', name);
+    this.setState(prevState => {
+      // prevState.players.push({name : name, id: ++this.maxId, score: 0});
+      // return{
+      //   players:[ ...prevState.players ]
+      // }
+
+      //원본 배열을 훼손하지 않고 새로운 배열을 생성하여 추가.
+      const players = [ ...prevState.players];
+      players.push({name : name, id: ++this.maxId, score: 0})
+      return{
+        players:players
+      }
+    });
   }
 }
 
