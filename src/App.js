@@ -69,6 +69,8 @@ class App extends React.Component {
   handAddPlayer = (name) => {
     console.log('handAddPlayer', name);
     this.setState(prevState => {
+
+      // 배열에 추가가 먼저 이루어지고 딥카피로 배열 새로 추가
       // prevState.players.push({name : name, id: ++this.maxId, score: 0});
       // return{
       //   players:[ ...prevState.players ]
@@ -76,9 +78,9 @@ class App extends React.Component {
 
       //원본 배열을 훼손하지 않고 새로운 배열을 생성하여 추가.
       const players = [ ...prevState.players];
-      players.push({name : name, id: ++this.maxId, score: 0})
+      players.push({name, id: ++this.maxId, score: 0})
       return{
-        players:players
+        players
       }
     });
   }

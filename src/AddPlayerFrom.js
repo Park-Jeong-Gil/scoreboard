@@ -11,15 +11,22 @@ export class AddPlayerFrom extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    const form = document.getElementById("form");
+    const player = document.getElementById("player");
+    console.log(form.checkValidity());
+    console.log(player.validity.valid);
+
     this.props.addPlayer(this.state.value);
     this.setState({value:''});
   }
 
   render() {
     return (
-      <form className='form' onSubmit={this.handleSubmit}>
-        <input className='input' type='text' placeholder="enter a Player's name"
-               value={this.state.value} onChange={this.handleValueChange}/>
+      <form id='form' className='form' onSubmit={this.handleSubmit} noValidate>
+        <input id='player' className='input' type='text' placeholder="enter a Player's name"
+               value={this.state.value} onChange={this.handleValueChange} required/>
+                                                  {/*// required 입력란이 값이 없을때 submit X*/}
         <input className='input' type='submit' value='Add Player' />
       </form>
     );
