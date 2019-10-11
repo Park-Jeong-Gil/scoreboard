@@ -1,6 +1,7 @@
 import React from 'react';
-import {Stats} from './Stats';
-import {Stopwatch} from './Stopwatch';
+import {Stats} from "./Stats";
+import {Stopwatch} from "./Stopwatch";
+import PropTypes from 'prop-types';
 
 // function component 만드는 법
 // 1. 첫글자가 대문자
@@ -14,4 +15,17 @@ export const Header = ({players, title}) => {
       <Stopwatch/>
     </header>
   );
+}
+
+Header.propTypes = {
+  title: PropTypes.string,
+  players: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    score: PropTypes.number,
+    name: PropTypes.string
+  }))
+}
+
+Header.defaultProps = {
+  title: 'Scoreboard'
 }
