@@ -1,10 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
 import {Header} from './Header';
 import {Player} from './Player';
 import {AddPlayerFrom} from "./AddPlayerFrom";
+import {connect} from "react-redux";
 
 // 클래스 컴포넌트
 // 1. React.Component 상속, 2: render 오버라이딩해서 React Element를 리턴
@@ -12,22 +11,14 @@ import {AddPlayerFrom} from "./AddPlayerFrom";
 
 class App extends React.Component {
   maxId = 4;
-  state = {
-    players: [
-      {name: 'LDK', score: 30, id: 1},
-      {name: 'HONG', score: 40, id: 2},
-      {name: 'KIM', score: 50, id: 3},
-      {name: 'PARK', score: 60, id: 4},
-    ]
-  }
 
   render() {
     return (
       <div className="scoreboard">
-        <Header players={this.state.players} />
+        <Header players={this.props.players} />
 
         {
-          this.state.players.map((player) => {
+          this.props.players.map((player) => {
             return (
               <Player name={player.name} score={player.score} id={player.id} key={player.id}
                 // 2. props로 콜백 펑션을 전달
@@ -86,4 +77,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  // 왼쪽은 props, 오른쪽이 store state
+  players: state.playerReducer.players
+})
+
+export default connect(mapStateToProps)(App);
+
