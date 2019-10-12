@@ -4,6 +4,7 @@ import Header from './Header';
 import Player from './Player';
 import AddPlayerFrom from "./AddPlayerFrom";
 import {connect} from "react-redux";
+import {CustomPlayer} from "./CustomPlayer";
 
 // 클래스 컴포넌트
 // 1. React.Component 상속, 2: render 오버라이딩해서 React Element를 리턴
@@ -19,7 +20,7 @@ class App extends React.Component {
         {
           this.props.players.map((player) => {
             return (
-              <Player name={player.name} score={player.score} id={player.id} key={player.id}
+              <CustomPlayer name={player.name} score={player.score} id={player.id} key={player.id}
                 // 2. props로 콜백 펑션을 전달
               />
             )
