@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {removePlayer} from "./redux/actions";
 import {connect} from "react-redux";
 
-class Player extends React.Component{
+class Player extends React.PureComponent{
   static price = 1000; // Player.price
   static propTypes = {
     removePlayer: PropTypes.func,
@@ -18,16 +18,17 @@ class Player extends React.Component{
           <span className="player-name">
             {/*3. 콜백 펑션 호출*/}
             <button className="remove-player" onClick={() => removePlayer(id)}> X </button>
+            {this.props.children}
             {name}
           </span>
           <Counter score={score} id={id} />
         </div>
     );
   };
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    //console.log(nextProps);
-    return nextProps.score !== this.props.score ? true :false;
-  }
+  // shouldComponentUpdate(nextProps, nextState, nextContext) {
+  //   //console.log(nextProps);
+  //   return nextProps.score !== this.props.score ? true :false;
+  // }
 }
 
 // 액션을 디스패치하는 펑션을 props 매핑
