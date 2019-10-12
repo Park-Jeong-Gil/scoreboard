@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import {Header} from './Header';
-import {Player} from './Player';
+import Header from './Header';
+import Player from './Player';
 import AddPlayerFrom from "./AddPlayerFrom";
 import {connect} from "react-redux";
 
@@ -10,20 +10,17 @@ import {connect} from "react-redux";
 // 3. 속성앞에 this
 
 class App extends React.Component {
-  maxId = 4;
 
   render() {
     return (
       <div className="scoreboard">
-        <Header players={this.props.players} />
+        <Header />
 
         {
           this.props.players.map((player) => {
             return (
               <Player name={player.name} score={player.score} id={player.id} key={player.id}
                 // 2. props로 콜백 펑션을 전달
-                      removePlayer={this.handleRemovePlayer}
-                      changeScore={this.handleChangeScore}
               />
             )
           })
@@ -34,28 +31,29 @@ class App extends React.Component {
   }
 
   // 1. 콜백 펑션 정의
-  handleRemovePlayer = (id) => {
-    console.log('handleRemovePlayer: ', id);
-    this.setState(prevState => ({
-      players: prevState.players.filter(player => player.id !== id)
-    }));
-  }
-  handleChangeScore = (id, delta) => {
-    console.log('handleChangeScore: ', id, delta);
-    this.setState(prevState => {
-      // const player = prevState.players.find(player => player.id === id);
-      // player.score += delta;
-      return {
-        //player: [...prevState.players]
-        player: prevState.players.map(player => {
-          if (player.id === id) {
-            player.score += delta;
-          }
-          return player;
-        })
-      }
-    })
-  }
+  // handleRemovePlayer = (id) => {
+  //   console.log('handleRemovePlayer: ', id);
+  //   this.setState(prevState => ({
+  //     players: prevState.players.filter(player => player.id !== id)
+  //   }));
+  // }
+
+  // handleChangeScore = (id, delta) => {
+  //   console.log('handleChangeScore: ', id, delta);
+  //   this.setState(prevState => {
+  //     // const player = prevState.players.find(player => player.id === id);
+  //     // player.score += delta;
+  //     return {
+  //       //player: [...prevState.players]
+  //       player: prevState.players.map(player => {
+  //         if (player.id === id) {
+  //           player.score += delta;
+  //         }
+  //         return player;
+  //       })
+  //     }
+  //   })
+  // }
 
   // handAddPlayer = (name) => {
   //   console.log('handAddPlayer', name);

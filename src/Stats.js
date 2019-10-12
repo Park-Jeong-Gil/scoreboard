@@ -1,6 +1,8 @@
 import React from 'react';
+import {playerReducer} from "./redux/reducers/player";
+import {connect} from "react-redux";
 
-export const Stats = (props) => {
+const Stats = (props) => {
   let totalPlayers =  props.players.length;
   let totalScore = 0;
   props.players.forEach(player => totalScore += player.score);
@@ -21,3 +23,11 @@ export const Stats = (props) => {
     </table>
   );
 }
+
+
+const mapStateToProps = (state) => ({
+  // 왼쪽은 props, 오른쪽이 store state
+  players: state.playerReducer.players
+})
+// 커링펑션, HoC
+export default connect(mapStateToProps)(Stats);

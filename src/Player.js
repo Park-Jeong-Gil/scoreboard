@@ -1,8 +1,10 @@
 import React from 'react';
-import {Counter} from "./Counter";
+import Counter from "./Counter";
 import PropTypes from 'prop-types';
+import {removePlayer} from "./redux/actions";
+import {connect} from "react-redux";
 
-export class Player extends React.Component{
+class Player extends React.Component{
   static price = 1000; // Player.price
   static propTypes = {
     removePlayer: PropTypes.func,
@@ -18,7 +20,7 @@ export class Player extends React.Component{
             <button className="remove-player" onClick={() => removePlayer(id)}> X </button>
             {name}
           </span>
-          <Counter score={score} changeScore={changeScore} id={id} />
+          <Counter score={score} id={id} />
         </div>
     );
   };
@@ -28,4 +30,11 @@ export class Player extends React.Component{
   }
 }
 
-// Player.propTypes = {}
+// 액션을 디스패치하는 펑션을 props 매핑
+const mapActionToProps = (dispatch) => ({
+  // 왼쪽은 props, 오른쪽은 (액션을 디스패치하는)펑션
+  removePlayer: (id) => dispatch(removePlayer(id))
+})
+
+// 커링펑션, HoC
+export default connect(null, mapActionToProps)(Player);
