@@ -4,15 +4,17 @@ import {Stopwatch} from "./Stopwatch";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
+import styles from './pages/scoreboard/scoreboard.module.css';
+
 // function component 만드는 법
 // 1. 첫글자가 대문자
 // 2. React Elemement를 리턴
 const Header = ({players, title}) => {
   //console.log(props);
   return (
-    <header className="header">
+    <header className={styles.header}>
       <Stats/>
-      <h1 className="h1">{title}</h1>
+      <h1 className={styles.h1}>{title}</h1>
       <Stopwatch/>
     </header>
   );

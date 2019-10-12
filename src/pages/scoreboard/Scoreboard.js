@@ -1,5 +1,5 @@
 import React from 'react';
-import './scoreboard.css';
+import style from './scoreboard.module.css';
 import Header from "../../Header";
 import {CustomPlayer} from "../../CustomPlayer";
 import AddPlayerFrom from "../../AddPlayerFrom";
@@ -17,7 +17,7 @@ class Scoreboard extends React.Component {
   }
   render() {
     return (
-      <div className="scoreboard">
+      <div className={style.scoreboard}>
         <Header />
         {
           this.props.players.map((player) => {

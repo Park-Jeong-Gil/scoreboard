@@ -3,6 +3,7 @@ import Counter from "./Counter";
 import PropTypes from 'prop-types';
 import {removePlayer} from "./redux/actions";
 import {connect} from "react-redux";
+import styles from './pages/scoreboard/scoreboard.module.css';
 
 class Player extends React.PureComponent{
   static price = 1000; // Player.price
@@ -14,10 +15,10 @@ class Player extends React.PureComponent{
       //console.log(this.props.name, ' rendered');
       const {removePlayer, id, name, score, changeScore} =this.props
       return (
-        <div className="player">
-          <span className="player-name">
+        <div className={styles.player}>
+          <span className={styles['player-name']}>
             {/*3. 콜백 펑션 호출*/}
-            <button className="remove-player" onClick={() => removePlayer(id)}> X </button>
+            <button className={styles['remove-player']} onClick={() => removePlayer(id)}> X </button>
             {this.props.children}
             {name}
           </span>

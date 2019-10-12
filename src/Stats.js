@@ -2,6 +2,8 @@ import React from 'react';
 import {playerReducer} from "./redux/reducers/player";
 import {connect} from "react-redux";
 
+import styles from './pages/scoreboard/scoreboard.module.css';
+
 const Stats = (props) => {
   let totalPlayers =  props.players.length;
   let totalScore = 0;
@@ -9,7 +11,7 @@ const Stats = (props) => {
 
   return (
 
-    <table className="stats">
+    <table className={styles.stats}>
       <tbody>
       <tr>
         <td>Players:</td>

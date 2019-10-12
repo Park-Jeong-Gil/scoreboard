@@ -2,6 +2,9 @@ import React from 'react';
 import {addPlayer} from "./redux/actions";
 import {connect} from "react-redux";
 
+import styles from './pages/scoreboard/scoreboard.module.css';
+
+
 class AddPlayerFrom extends React.Component {
 
   textInput =React.createRef() ;
@@ -19,11 +22,11 @@ class AddPlayerFrom extends React.Component {
 
   render() {
     return (
-      <form id='form' className='form' onSubmit={this.handleSubmit} noValidate>
-        <input id='player' ref={this.textInput} className='input' type='text'
+      <form id='form' className={styles.form} onSubmit={this.handleSubmit} noValidate>
+        <input id='player' ref={this.textInput} className={styles.input} type='text'
                placeholder="enter a Player's name" required/>
                                                   {/*// required 입력란이 값이 없을때 submit X*/}
-        <input className='input' type='submit' value='Add Player' />
+        <input className={styles.input} type='submit' value='Add Player' />
       </form>
     );
   }
