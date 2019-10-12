@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Header} from './Header';
 import {Player} from './Player';
-import {AddPlayerFrom} from "./AddPlayerFrom";
+import AddPlayerFrom from "./AddPlayerFrom";
 import {connect} from "react-redux";
 
 // 클래스 컴포넌트
@@ -28,7 +28,7 @@ class App extends React.Component {
             )
           })
         }
-        <AddPlayerFrom addPlayer={this.handAddPlayer} />
+        <AddPlayerFrom/>
       </div>
     );
   }
@@ -57,24 +57,24 @@ class App extends React.Component {
     })
   }
 
-  handAddPlayer = (name) => {
-    console.log('handAddPlayer', name);
-    this.setState(prevState => {
-
-      // 배열에 추가가 먼저 이루어지고 딥카피로 배열 새로 추가
-      // prevState.players.push({name : name, id: ++this.maxId, score: 0});
-      // return{
-      //   players:[ ...prevState.players ]
-      // }
-
-      //원본 배열을 훼손하지 않고 새로운 배열을 생성하여 추가.
-      const players = [ ...prevState.players];
-      players.push({name, id: ++this.maxId, score: 0})
-      return{
-        players
-      }
-    });
-  }
+  // handAddPlayer = (name) => {
+  //   console.log('handAddPlayer', name);
+  //   this.setState(prevState => {
+  //
+  //     // 배열에 추가가 먼저 이루어지고 딥카피로 배열 새로 추가
+  //     // prevState.players.push({name : name, id: ++this.maxId, score: 0});
+  //     // return{
+  //     //   players:[ ...prevState.players ]
+  //     // }
+  //
+  //     //원본 배열을 훼손하지 않고 새로운 배열을 생성하여 추가.
+  //     const players = [ ...prevState.players];
+  //     players.push({name, id: ++this.maxId, score: 0})
+  //     return{
+  //       players
+  //     }
+  //   });
+  // }
 }
 
 const mapStateToProps = (state) => ({

@@ -8,5 +8,10 @@ const playerInitialState = {
 }
 
 export const playerReducer = (state = playerInitialState, action) => {
+	switch (action.type) {
+		case 'ADD_PLAYER':
+			console.log('addPlayer');
+			break;
+	}
 	return state;
 }
